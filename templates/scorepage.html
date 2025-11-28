@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>CIFAR100 Classifier</title>
+<style>
+body { padding:30px; font-family:Arial; }
+.container { width:80%; margin:auto; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Классификация изображений CIFAR-100</h2>
+
+    <form action="predictImage" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="filePath" required><br><br>
+        <button type="submit">Загрузить</button>
+    </form>
+
+    {% if scorePrediction %}
+        <h3>Результат: {{ scorePrediction }}</h3>
+    {% endif %}
+
+    {% if img_uri %}
+        <img src="{{ img_uri }}" style="margin-top:20px;">
+    {% endif %}
+</div>
+
+</body>
+</html>
